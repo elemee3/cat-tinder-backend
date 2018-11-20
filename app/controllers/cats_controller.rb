@@ -26,6 +26,7 @@ class CatsController < ApplicationController
 
   def destroy
     @cat.delete
+    render json: @cat.id, status: :accepted
   end
 
   private
