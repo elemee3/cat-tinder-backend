@@ -12,6 +12,12 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
+    if @cat.valid?
+      @cat.save
+      render json: @cat, status: :created
+    else
+      render json: @cat.errors, status: :unprocessable_entity
+    end
   end
 
   def update
